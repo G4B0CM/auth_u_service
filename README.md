@@ -87,3 +87,38 @@ The service is structured into four distinct layers:
     "email": "test@example.com",
     "password": "a-strong-password"
   }
+
+### Success Response (201):
+Generated json
+{
+  "id": "some-uuid",
+  "email": "test@example.com"
+}
+
+### Login a user
+URL: /api/v1/auth/login
+Method: POST
+Request Body:
+Generated json
+{
+  "email": "test@example.com",
+  "password": "a-strong-password"
+}
+
+Success Response (200):
+Generated json
+{
+  "access_token": "your.jwt.token",
+  "token_type": "bearer"
+}
+
+**`auth-service/.env.example`**
+```ini
+# PostgreSQL Database URL
+# Format: postgresql+psycopg2://user:password@host:port/dbname
+DATABASE_URL="postgresql+psycopg2://user:password@localhost:5432/auth_db"
+
+# JWT Settings
+SECRET_KEY="a_very_secret_key_that_should_be_long_and_random"
+ALGORITHM="HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES=30
