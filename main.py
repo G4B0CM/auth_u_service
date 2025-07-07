@@ -14,7 +14,7 @@ app = FastAPI(
 )
 
 # Include the router for version 1 of the auth API
-app.include_router(auth_router.router, prefix="/api/v1/auth", tags=["Authentication"])
+app.include_router(auth_router.router, tags=["Authentication"])
 
 @app.get("/health", tags=["Health Check"])
 def health_check():
